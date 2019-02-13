@@ -13,10 +13,10 @@ export default class App extends React.Component {
   }
 
   getBeers() {
-    fetch(`https://api.punkapi.com/v2/beers?`)
+    fetch(`https://private-ee5e3-testproject72.apiary-mock.com/questions`)
       .then(data => data.json())
       .then(beers => {
-        this.setState({ beers });
+        this.setState({ beers: beers.beers });
       })
       .catch(error => {
         console.log(error);
@@ -26,7 +26,7 @@ export default class App extends React.Component {
   render() {
     let beerNames = this.state.beers.map(beer => (
       <li>
-        <strong> {beer.name}</strong> - {beer.tagline}
+        <strong> {beer.name}</strong>
       </li>
     ));
     return <div> {beerNames}</div>;
